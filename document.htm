@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Verification</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #FF5E5B, #FFB1B3, #6B4F98, #FFDC5D);
+            background-size: 300% 300%;
+            animation: gradientAnimation 5s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .upload-section,
+        .camera-section,
+        .preview-section {
+            background-color: #fff;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            padding: 12px;
+            font-size: 16px;
+            color: #333;
+            background-color: #f9f9f9;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        #camera {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #FF5E5B;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #FF3D3B;
+        }
+
+        .preview {
+            margin-top: 20px;
+            display: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .preview-section {
+            margin-top: 30px;
+        }
+
+        .preview-header {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        /* Styling for the Back Button */
+        .back-button {
+            background-color: #6B4F98;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #5b3b79;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Document Verification</h1>
+
+        <div class="upload-section">
+            <label for="upload-file">📂 Upload Document</label>
+            <input type="file" id="upload-file" accept="image/*, .pdf">
+        </div>
+
+        <div class="camera-section">
+            <label>📸 Capture Document Using Camera</label>
+            <video id="camera" autoplay></video>
+            <button id="capture">Capture</button>
+        </div>
+
+        <div class="preview-section">
+            <h2 class="preview-header">Uploaded Document Preview</h2>
+            <img id="upload-preview" class="preview">
+        </div>
+
+        <div class="preview-section">
+            <h2 class="preview-header">Captured Document Preview</h2>
+            <img id="capture-preview" class="preview">
+        </div>
+
+        <button id="submit">Submit Document</button>
+
+        <!-- Back Button moved below submit button -->
+        <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+
+    <script>
+        const uploadFileInput = document.getElementById('upload-file');
+        const uploadPreview = document.getElementById('upload-preview');
+        const cameraElement = document.getElementById('camera');
+        const captureButton = document.getElementById('capture');
+        const capturePreview = document.getElementById('capture-preview');
+        const submitButton = document.getElementById('submit');
+        const backButton = document.querySelector('.back-button');
+        let videoStream = null;
+        let capturedImage = null;
+
+        // File Upload Preview
+        uploadFileInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const imageUrl = URL.createObjectURL(file);
+                uploadPreview.src = imageUrl;
+                uploadPreview.style.display = 'block';
+                capturedImage = null; // Clear captured image when a new file is uploaded
+            }
+        });
+
+        // Start Camera Stream
+        async function startCamera() {
+            try {
+                videoStream = await navigator.mediaDevices.getUserMedia({ video: true });
+                cameraElement.srcObject = videoStream;
+            } catch (error) {
+                alert('Unable to access the camera. Please check your permissions.');
+                console.error('Camera error:', error);
+            }
+        }
+
+        // Capture Image from Video
+        captureButton.addEventListener('click', () => {
+            if (videoStream) {
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.width = cameraElement.videoWidth;
+                canvas.height = cameraElement.videoHeight;
+                context.drawImage(cameraElement, 0, 0, canvas.width, canvas.height);
+                const imageDataUrl = canvas.toDataURL('image/png');
+                capturePreview.src = imageDataUrl;
+                capturePreview.style.display = 'block';
+                capturedImage = imageDataUrl; // Store captured image data
+            } else {
+                alert('Camera not initialized. Please refresh the page.');
+            }
+        });
+
+        // Submit Button Functionality
+        submitButton.addEventListener('click', () => {
+            if (uploadFileInput.files.length > 0) {
+                alert('File uploaded successfully!');
+                // Add file upload logic here, e.g., send to a server
+            } else if (capturedImage) {
+                alert('Captured image submitted successfully!');
+                // Add image upload logic here, e.g., send `capturedImage` to a server
+            } else {
+                alert('No document selected or captured. Please upload or capture a document.');
+            }
+        });
+
+        // Stop Camera Stream on Page Unload
+        window.addEventListener('beforeunload', () => {
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+            }
+        });
+
+        // Start the camera on page load
+        window.onload = startCamera;
+
+
+        captureButton.addEventListener('click', () => {
+    if (videoStream) {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        canvas.width = cameraElement.videoWidth;
+        canvas.height = cameraElement.videoHeight;
+        context.drawImage(cameraElement, 0, 0, canvas.width, canvas.height);
+        const imageDataUrl = canvas.toDataURL('image/png');
+        capturePreview.src = imageDataUrl;
+        capturePreview.style.display = 'block';
+
+        // Save captured image to localStorage
+        localStorage.setItem('photo', imageDataUrl);
+    } else {
+        alert('Camera not initialized. Please refresh the page.');
+    }
+});
+
+    </script>
+</body>
+
+</html>

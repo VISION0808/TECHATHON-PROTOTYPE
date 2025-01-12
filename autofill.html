@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Registration Form</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .form-container {
+            background: #ffffff;
+            border: 2px solid #000;
+            border-radius: 5px;
+            padding: 30px;
+            width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .form-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-header h1 {
+            font-size: 24px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .form-header p {
+            font-size: 14px;
+            color: #555;
+            margin: 5px 0 20px;
+        }
+        .photo-preview {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            text-align: center;
+        }
+        .photo-preview img {
+            width:85px;
+            height: 100px;
+            border-radius: 5px;
+            border: 2px solid #000000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .photo-preview label {
+            font-size: 12px;
+            color: #666;
+            display: block;
+            margin-top: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .instructions {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .back-button {
+            margin-top: 10px;
+            background-color: #6c757d;
+        }
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="photo-preview">
+            <img id="photo-preview" alt="Captured Photo Preview">
+            <label>Photo Preview</label>
+        </div>
+        <div class="form-header">
+            <h1>Government Registration Form</h1>
+            <p>Ministry of Citizen Welfare and Services</p>
+        </div>
+        <form id="governmentForm">
+            <div class="instructions">
+                Fields marked with * are mandatory.
+            </div>
+
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+
+            <label for="age">Age *</label>
+            <input type="number" id="age" placeholder="Enter your age" required>
+
+            <label for="state">State of Residence *</label>
+            <select id="state" required>
+                <option value="" disabled selected>Select your state</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+            </select>
+
+            <label for="income-group">Income Group *</label>
+            <select id="income-group" required>
+                <option value="" disabled selected>Select your income group</option>
+                <option value="Below Poverty Line">Below Poverty Line (BPL)</option>
+                <option value="Lower Middle Class">Lower Middle Class</option>
+                <option value="Upper Middle Class">Upper Middle Class</option>
+                <option value="High Income">High Income</option>
+            </select>
+
+            <label for="category">Category *</label>
+            <select id="category" required>
+                <option value="" disabled selected>Select your category</option>
+                <option value="General">General</option>
+                <option value="SC">Scheduled Caste (SC)</option>
+                <option value="ST">Scheduled Tribe (ST)</option>
+                <option value="OBC">Other Backward Classes (OBC)</option>
+            </select>
+
+            <label for="aadhaar">Aadhaar Card Number *</label>
+            <input type="text" id="aadhaar" placeholder="Enter your Aadhaar number" maxlength="12" pattern="\d{12}" title="Aadhaar number must be 12 digits" required>
+
+            <label for="pan">PAN Card Number *</label>
+            <input type="text" id="pan" placeholder="Enter your PAN number" maxlength="10" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" title="PAN number must be in the format ABCDE1234F" required>
+
+            <button type="submit">Submit</button>
+        </form>
+        <button class="back-button" onclick="goToHomepage()">Back to Homepage</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const name = localStorage.getItem('name');
+            const age = localStorage.getItem('age');
+            const state = localStorage.getItem('state');
+            const incomeGroup = localStorage.getItem('income-group');
+            const category = localStorage.getItem('category');
+            const aadhaar = localStorage.getItem('aadhaar');
+            const pan = localStorage.getItem('pan');
+            const photo = localStorage.getItem('photo');
+
+            if (name) document.getElementById('name').value = name;
+            if (age) document.getElementById('age').value = age;
+            if (state) document.getElementById('state').value = state;
+            if (incomeGroup) document.getElementById('income-group').value = incomeGroup;
+            if (category) document.getElementById('category').value = category;
+            if (aadhaar) document.getElementById('aadhaar').value = aadhaar;
+            if (pan) document.getElementById('pan').value = pan;
+            if (photo) document.getElementById('photo-preview').src = photo;
+        });
+
+        document.getElementById('governmentForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            localStorage.setItem('name', document.getElementById('name').value);
+            localStorage.setItem('age', document.getElementById('age').value);
+            localStorage.setItem('state', document.getElementById('state').value);
+            localStorage.setItem('income-group', document.getElementById('income-group').value);
+            localStorage.setItem('category', document.getElementById('category').value);
+            localStorage.setItem('aadhaar', document.getElementById('aadhaar').value);
+            localStorage.setItem('pan', document.getElementById('pan').value);
+
+            alert('Form submitted successfully!');
+        });
+
+        function goToHomepage() {
+            window.location.href = "index.html"; // Replace with the actual URL of your homepage.
+        }
+    </script>
+</body>
+</html>

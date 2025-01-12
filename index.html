@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Scheme Discovery</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <body>
+      <div id="cursor-follower"></div>
+    </body>
+
+    <nav>
+      <h1><span id="apnee">अपनी</span><br />YOJANA.in</h1>
+      <div id="mid-nav">
+        <h1>Unlock your benefits with AI</h1>
+      </div>
+      <div id="btn">
+        <button id="btn1">Contact Us</button>
+        <!-- Popup for Contact Us -->
+        <div id="contact-popup">
+          Email: <a href="mailto:support@mygov.in">support@mygov.in</a>
+        </div>
+        <button id="btn2"><i class="ri-mail-ai-line"></i></button>
+        <button id="btn3"><i class="ri-notification-3-line"></i></button>
+          
+          <select id="language-select" name="languages">
+            <option value="hindi">Hindi</option>
+            <option value="english">English</option>
+            <option value="urdu">Urdu</option>
+            <option value="gujarati">Gujarati</option>
+            <option value="bengali">Bengali</option>
+            <option value="assamese">Assamese</option>
+          </select>
+        <!-- Reload Button -->
+        <button id="reload-btn"><i class="ri-refresh-line"></i></button>
+      </div>
+    </nav>
+
+    <div id="main">
+      <!-- Scheme Discovery Section -->
+      <div id="up">
+        <h1>
+          <a href="#">QUICK <br /> SCHEME</a>
+        </h1>
+        <div id="scheme-popup">
+          <h2>New & Upcoming Schemes</h2>
+          <ul class="scheme-list">
+            <li>Healthcare Subsidy Scheme - Apply by 15th March 2025</li>
+            <li>Education Grant - Upcoming in April 2025</li>
+            <li>Small Business Loan Scheme - Applications Open</li>
+            <li>Energy Efficiency Subsidy - Apply Now until 30th June 2025</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Robo Image Section -->
+      <div id="robo">
+        <img
+          src="img/pixlr-image-generator-23e5098e-4d26-4fc1-9dc8-afbb4a6ab8f2.png"
+          alt="AI robot"
+        />
+      </div>
+
+      <div id="ai-div" style="position: relative">
+        <h1>AI</h1>
+        <div id="ai-popup">
+          <a href="https://mygov.in/schemes/" target="_blank"
+            ><i class="ri-arrow-right-up-line"></i> mygov.in</a
+          >
+        </div>
+        <p>
+          SCHEME <br />
+          DISCOVERY
+        </p>
+      </div>
+
+      <!-- Sliding Image Section with Border and Proper Section -->
+      <div id="sliding-img-container">
+        <div id="sliding-img">
+          <img
+            src="img/1046706-pradhanmantrigaribkalyanyojana.jpg"
+            alt="Image 1"
+          />
+          <img src="img/1046708-kisansammannidhiyojana.jpg" alt="Image 2" />
+          <img src="img/1046709-jandhanyojana.avif" alt="Image 3" />
+          <img src="img/1046710-ujjwalayojana.jpg" alt="Image 4" />
+          <img src="img/1046711-ayushmanbharatyojana.avif" alt="Image 5" />
+          <img src="collage-647_122916114529.avif" alt="Image 6" />
+          <img
+            src="img/1046706-pradhanmantrigaribkalyanyojana.jpg"
+            alt="Image 1"
+          />
+          <img src="img/1046708-kisansammannidhiyojana.jpg" alt="Image 2" />
+          <img src="img/1046709-jandhanyojana.avif" alt="Image 3" />
+          <img src="img/1046710-ujjwalayojana.jpg" alt="Image 4" />
+          <img src="img/1046711-ayushmanbharatyojana.avif" alt="Image 5" />
+          <img src="collage-647_122916114529.avif" alt="Image 6" />
+          <img
+            src="img/1046706-pradhanmantrigaribkalyanyojana.jpg"
+            alt="Image 1"
+          />
+          <img src="img/1046708-kisansammannidhiyojana.jpg" alt="Image 2" />
+          <img src="img/1046709-jandhanyojana.avif" alt="Image 3" />
+          <img src="img/1046710-ujjwalayojana.jpg" alt="Image 4" />
+          <img src="img/1046711-ayushmanbharatyojana.avif" alt="Image 5" />
+          <img src="collage-647_122916114529.avif" alt="Image 6" />
+        </div>
+      </div>
+
+      <!-- Functional Buttons Section -->
+      <div id="wraper">
+        <div id="btn-div">
+          <h3><a href="autofill.html">AUTOFILL FORMS</a></h3>
+        </div>
+        <div id="upld"><a href="upload.htm">UPLOAD DOCUMENTS</a></div>
+        <div id="ET">
+          <h3><a href="application-tracker.html">TRACK APPLICATION</a></h3>
+        </div>
+        <div id="btn-div">
+          <h3><a href="suggestion.html">SCHEME SUGGESTION</a></h3>
+        </div>
+      </div>
+
+      <!-- Cards Section -->
+      <div id="card">
+        <div id="min-card">
+          <i class="ri-search-fill"></i>
+          <h2>Registration</h2>
+        </div>
+        <div id="min-card">
+          <i class="ri-verified-badge-line"></i>
+          <h2>Document Verification</h2>
+        </div>
+        <div id="min-card">
+          <i class="ri-links-line"></i>
+          <h2>Document Required</h2>
+        </div>
+      </div>
+
+      <!-- Apply Now Buttons -->
+      <div id="btn-aply">
+        <div id="min-btn">
+          <h3><a href="applynow.html">APPLY NOW</a></h3>
+        </div>
+        <div id="min-btn">
+          <h3><a href="document.htm">VERIFY HERE </a></h3>
+        </div>
+        <div id="min-btn">
+          <h3><a href="documentREQ.htm">CHECK HERE </a></h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright Section -->
+    <div id="copyright-section">
+      <i
+        class="ri-copyright-line"
+        style="font-size: 16px; vertical-align: middle"
+      ></i>
+      <span style="margin-left: 5px">Copyright by Harshit Tiwari</span>
+    </div>
+
+    <script>
+      // Reload button functionality
+      document
+        .getElementById("reload-btn")
+        .addEventListener("click", function () {
+          location.reload(); // Reload the page
+        });
+
+      // GSAP ScrollTrigger Animations
+      gsap.registerPlugin(ScrollTrigger);
+
+      function initAnimations() {
+        // Navigation animation on page load
+        gsap.from("nav", {
+          y: -100,
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+        });
+
+        // Scheme discovery section
+        gsap.from("#up", {
+          scrollTrigger: {
+            trigger: "#up",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          x: -300,
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+        });
+
+        // Robo image parallax effect
+        gsap.from("#robo img", {
+          scrollTrigger: {
+            trigger: "#robo",
+            start: "top 90%",
+            scrub: 1,
+          },
+          y: 100,
+          scale: 0.9,
+          opacity: 0,
+        });
+
+        // AI text fade-in animation
+        gsap.from("#ai-div h1, #ai-div p", {
+          scrollTrigger: {
+            trigger: "#ai-div",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+          y: 50,
+          opacity: 0,
+          stagger: 0.2,
+          duration: 1,
+          ease: "power2.out",
+        });
+
+        // Functional buttons scale effect
+        gsap.from("#wraper > div", {
+          scrollTrigger: {
+            trigger: "#wraper",
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+          scale: 0,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.3,
+          ease: "back.out(1.7)",
+        });
+
+        // Cards fade-in and slide-up animation
+        gsap.from("#card > div", {
+          scrollTrigger: {
+            trigger: "#card",
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+          y: 50,
+          opacity: 0,
+          stagger: 0.3,
+          duration: 1,
+          ease: "power2.out",
+        });
+
+        // Apply Now buttons pop effect
+        gsap.from("#btn-aply > div", {
+          scrollTrigger: {
+            trigger: "#btn-aply",
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+          scale: 0,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.3,
+          ease: "back.out(1.7)",
+        });
+      }
+
+      // Initialize animations when the page loads
+      window.addEventListener("load", function () {
+        initAnimations();
+      });
+
+      // Get the sliding image container
+      const slidingContainer = document.getElementById("sliding-img");
+      const containerWidth = slidingContainer.offsetWidth; // Get the container's width
+      const images = slidingContainer.querySelectorAll("img");
+      const totalImages = images.length;
+
+      // Clone the first image and append it to the end to create a seamless loop
+      const firstImage = images[0].cloneNode(true);
+      slidingContainer.appendChild(firstImage);
+
+      let position = 0; // Starting position for sliding
+
+      // Function to move the images continuously
+      function slideImages() {
+        position -= 1; // Move images to the left by 1 pixel
+        if (position <= -containerWidth) {
+          position = 0; // Reset the position to the start when the last image has slid out
+          slidingContainer.style.transition = "none"; // Remove transition temporarily for the reset
+          slidingContainer.style.transform = `translateX(${position}px)`; // Instant reset to avoid jump
+          setTimeout(() => {
+            slidingContainer.style.transition = "transform 20s linear"; // Reapply smooth transition
+          }, 50);
+        }
+        slidingContainer.style.transform = `translateX(${position}px)`; // Apply the transformation
+      }
+
+      // Start the sliding animation
+      setInterval(slideImages, 10); // Adjust the interval (milliseconds) to control speed
+
+      document.addEventListener("click", (event) => {
+        const btn = document.querySelector("#btn > button:first-child");
+        const popup = document.getElementById("contact-popup");
+        if (!btn.contains(event.target) && !popup.contains(event.target)) {
+          popup.style.display = "none";
+        }
+      });
+
+
+      document.addEventListener("mousedown", () => {
+        // Add a scale effect on mouse down
+        cursorFollower.style.transform = "translate(-50%, -50%) scale(1.5)";
+        cursorFollower.style.backgroundColor = "#4CAF50";
+      });
+
+      document.addEventListener("mouseup", () => {
+        // Reset scale on mouse up
+        cursorFollower.style.transform = "translate(-50%, -50%) scale(1)";
+        cursorFollower.style.backgroundColor = "transparent";
+      });
+      
+    </script>
+  </body>
+</html>

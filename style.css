@@ -1,0 +1,569 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap'); 
+html, body {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg,  #ffffff);
+}
+#apnee{
+    color: red;
+}
+/* Fixed Nav */
+nav {
+    position: fixed; /* Fixed position */
+    top: 0; /* Stick to the top */
+    left: 0;
+    height: 4vw;
+    width: 100%;
+    background-color: #e2e2e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5vw;
+    text-transform: uppercase;
+    z-index: 999; /* Ensure it's on top of other content */
+    transition: filter 0.3s ease; /* Smooth transition for blur effect */
+}
+
+/* Button Styles */
+#btn button {
+    border: 1px solid #854455;
+    border-radius: 50px;
+    padding: 1vw 1.5vw;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* General shadow */
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow on hover */
+    left: 15px;
+}
+
+#btn button:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+#btn2 {
+    margin: 0vw 1vw;
+}
+
+/* Main Content */
+#main {
+    min-height: 100vh;
+    width: 100%;
+    background-color: whitet;
+    position: relative;
+    padding-top: 8vw; /* To prevent overlap with fixed nav */
+}
+
+/* Robo Image */
+#robo img {
+    height: 60vh; /* Set a maximum height */
+    width: 55vw; /* Set a maximum width */
+    position: absolute; /* Allow it to be positioned relative to its container */
+    left: 27%;
+    top: 6vw; /* Adjust this value to position the image below the navbar */
+    z-index: 1; /* Ensure it stays on top of the main content */
+    object-fit: contain; /* Maintain aspect ratio */
+    margin-left: -3%;
+}
+
+/* AI Div */
+#ai-div {
+    display: flex;
+    padding: 13vw 3vw 1vw;
+    padding-top: 5vw;
+    font-size: 3.2vw;
+    width: 30%;
+    margin-top: 70px;
+}
+
+#ai-div p {
+    padding-left: 1vw;
+    color: #02091a;
+    letter-spacing: 1px;
+    line-height: 54px;
+   
+
+}
+
+#ai-div h1 {
+    color: #da3139;
+    font-size: 21vh;
+    margin-top: -39px;
+}
+
+/* Scroll Effect for Nav Blur */
+nav.scrolled {
+    filter: blur(4px); /* Apply blur */
+}
+
+/* Main Heading */
+#main > h1 {
+    position: absolute;
+    top: 18%;
+    left: 73%;
+    font-size: 3.2vw;
+    font-weight: 500;
+    color: #02091a;
+}
+
+#main > img {
+    position: absolute;
+    left: 75%;
+    top: 13%;
+    height: 9vw;
+}
+
+
+/* Ensure that the popup shows up when the SD div is hovered */
+#up:hover #scheme-popup {
+    display: flex;
+}
+
+/* Popup styles */
+#scheme-popup {
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 100%; /* Position the popup below the #up div */
+    left: 40%; /* Center the popup horizontally */
+    transform: translateX(-50%); /* Adjust to center alignment */
+    width: 400px;
+    background-color: darkgrey;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    z-index: 100;
+    margin-top: 10px; /* Add some space between the #up div and the popup */
+}
+
+
+
+
+#scheme-popup h2 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.scheme-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.scheme-list li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+.scheme-list li:hover {
+    background-color: #e8e8e8;
+}
+
+/* Up Div */
+#up {
+    height: 7vw; /* Same height as #SD */
+    width: 21vw; /* Same width as #SD */
+    background: linear-gradient(to bottom right, #e65550, #cf4d46);
+    border-radius: 20px;
+    font-size: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 75%;
+    top: 16%;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.15); /* General shadow */
+}
+
+#up h1 a {
+    font-size: 2vw;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+
+
+#wraper {
+    height: 8vw;
+    width: 100%;
+    margin-top: 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2vw;
+}
+
+#btn-div a {
+    background: linear-gradient(to bottom right, #ee5b52, #c72b2b);
+    padding: 1vw 2vw;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* General shadow */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#btn-div a:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+#btn-div h3 {
+    font-size: 1vw;
+    font-weight: 500;
+}
+
+#upld a, #ET a {
+    background: linear-gradient(to bottom right, #172830, #0e1f28);
+    padding: 1vw 2vw;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* General shadow */
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#upld a:hover, #ET a:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+#upld h3 a, #ET h3 a {
+    font-size: 1vw;
+    font-weight: 500;
+}
+
+#dd {
+    position: absolute;
+    left: 65%;
+    top: 40%;
+}
+
+#dd img {
+    height: 20vw;
+}
+
+#card {
+    height: 20vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#min-card {
+    height: 20vw;
+    width: 22vw;
+    background: linear-gradient(to bottom right, #ee5b52, #c72b2b);
+    border-radius: 20px;
+    margin: 0 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* General shadow */
+}
+
+#min-card:hover {
+    overflow-y: auto;
+    transform: scale(1.05);
+    background: linear-gradient(to bottom right, #cf4d46, #b72422);
+}
+
+#min-card i {
+    font-size: 5vw;
+}
+
+#min-card h2 {
+    color: white;
+    text-transform: uppercase;
+    padding-top: 2vw;
+    font-weight: 500;
+}
+
+#btn-aply {
+    height: 5vw;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 95%;
+}
+
+#min-btn {
+    height: 3.5vw;
+    width: 15vw;
+    background: linear-gradient(to bottom right, #ee5b52, #c72b2b);
+    border-radius: 20px;
+    margin: 0vw 6.2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom right, #172830, #0e1f28);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* General shadow */
+    transition: box-shadow 0.3s ease-in-out;
+    margin-bottom: -5%;
+}
+
+#min-btn:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+#min-btn h3 a {
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+}
+
+#mid-nav h1 {
+    overflow: hidden; /* Ensures text is clipped until the animation reveals it */
+    white-space: nowrap; /* Prevents the text from wrapping */
+    border-right: 3px solid #02091a; /* Creates a cursor effect */
+    animation: typing 6s steps(40) 1s forwards, blink 0.75s step-end infinite; /* Typewriter animation */
+    color: #02091a;
+    margin-left: 40%;
+}
+
+/* Keyframes for typing effect */
+@keyframes typing {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+/* Keyframes for cursor blinking */
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+} 
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Zip Container */
+#zip-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 1000;
+}
+
+/* Left Section */
+#zip-left {
+    background: #333;
+    width: 50%;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+/* Right Section */
+#zip-right {
+    background: #333;
+    width: 50%;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+
+/* Content */
+#content {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    z-index: 500;
+}
+
+#content.visible {
+    opacity: 1;
+}
+
+
+/* Hover effect for ai-div h1 */
+#ai-div h1:hover {
+    color: #000000; /* Change to your desired hover color */
+    cursor: pointer;
+}
+
+/* Popup styles for "My Gov Schemes.in" */
+#ai-popup {
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 100%; /* Position just below the h1 */
+    left: 8%;
+    background-color: #000000;
+    padding: 8px 12px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    font-size: 0.9em;
+    width: 220px;
+    white-space: nowrap;
+    text-align: center;
+    color: white;
+    border-radius: 18px;
+}
+
+#ai-popup i {
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 400 ;
+}
+
+#ai-popup a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 30px;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+#ai-popup a:hover {
+    color: #da3139; /* Change to your desired hover link color */
+}
+
+/* Show the popup on h1 hover */
+#ai-div h1:hover + #ai-popup {
+    display: block;
+}
+
+#sliding-img-container{
+    border: 2px solid black;
+}
+
+/* Sliding Image Container */
+#sliding-img-container {
+    width: 100%;
+    height: 20vw; /* Adjust height as needed */
+    border-top: 2px solid black; /* Border for the sliding image container */
+    border-bottom: 2px solid black; /* Border for the sliding image container */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    overflow: hidden; /* Hide overflow to ensure clean edges */
+    background-color: #fff; /* White background */
+    position: relative;
+    margin-top: 16vw; /* Ensure space between elements */
+}
+
+/* Sliding Image Section */
+#sliding-img {
+    display: flex;
+    width: 600%; /* Adjust this width based on number of images */
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0s; /* No transition for the reset, immediate effect */
+}
+
+/* Each Image in the Sliding Section */
+#sliding-img img {
+    height: 100%;
+    width: auto;
+    flex-shrink: 0; /* Prevent images from shrinking */
+    margin-right: 0vw; /* Space between images */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+#copyright-section {
+    text-align: center;
+    margin: 120px 0;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #000000;
+    background-color: grey;
+    width: 100%;
+    height: auto; /* Change this from 30vh to auto if necessary */
+    padding: 20px; /* Add padding for spacing */
+    background-color: #f9f9f9; /* Optional background for visibility */
+    z-index: 1; /* Ensure it's above other content */
+    position: relative; /* Ensure proper positioning */
+}
+
+
+#btn2{
+    margin-right: -1px;
+    border-radius: 100%;
+}
+
+#btn1 {
+    position: relative;
+}
+
+#contact-popup {
+    position: absolute;
+    top: 65px; /* Adjust based on button position */
+    left: 74%; /* Center the popup under the button */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hidden */
+    z-index: 1000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+#btn1:hover + #contact-popup {
+    display: block; /* Show popup on hover */
+}
+
+#contact-popup a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+#contact-popup a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+#bulb{
+    color: white;
+    left: 0%;
+}
+
+select {
+    font-size: 13px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.448);
+    background-size: 15px;
+    width: 100px;
+    border: 1px solid #854455;
+    border-radius: 50px;
+    padding: 1vw 1.5vw;
+    transition: box-shadow 0.3s ease-in-out; /* Smooth transition for shadow on hover */
+  }
+
+
+select i{
+    font-size: 1px;
+}

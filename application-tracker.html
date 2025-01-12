@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Tracker</title>
+    <style>
+        /* General Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff5e5b, #f4a261, #2a9d8f, #264653, #e76f51);
+            background-size: 300% 300%;
+            animation: backgroundAnimation 10s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 400px;
+            opacity: 0; /* Initially hidden for animation */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            opacity: 0; /* Initially hidden for animation */
+        }
+
+        .back-button {
+            margin-top: 20px;
+            background-color: #f44336;
+        }
+
+        .back-button:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Application Tracker</h1>
+        <form id="trackerForm">
+            <input type="text" id="applicationNumber" placeholder="Enter Application Number" required>
+            <button type="submit">Track Application</button>
+        </form>
+        <div class="result" id="result"></div>
+        <button class="back-button" id="backBtn">Back</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        // Animate the container on load
+        document.addEventListener('DOMContentLoaded', () => {
+            gsap.to('.container', { opacity: 1, duration: 1.5, ease: "power2.out" });
+        });
+
+        // Form submission logic
+        document.getElementById('trackerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const applicationNumber = document.getElementById('applicationNumber').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!applicationNumber) {
+                resultDiv.textContent = 'Please enter a valid application number.';
+                resultDiv.style.color = 'red';
+                gsap.to(resultDiv, { opacity: 1, duration: 1 });
+                return;
+            }
+
+            // Simulate tracking logic
+            setTimeout(() => {
+                resultDiv.textContent = `Application #${applicationNumber} is in process. Please check back later.`;
+                resultDiv.style.color = 'green';
+                gsap.fromTo(resultDiv, { opacity: 0 }, { opacity: 1, duration: 1 });
+            }, 1000);
+        });
+
+        // Back button functionality
+        document.getElementById('backBtn').addEventListener('click', () => {
+            gsap.to('.container', { opacity: 0, duration: 1, ease: "power2.in", onComplete: () => {
+                window.location.href = 'index.html'; // Update this URL if necessary
+            }});
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheme Suggestion Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+        }
+
+        .container {
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px 30px;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #2a5298;
+        }
+
+        .user-details p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .scheme-list {
+            margin-top: 20px;
+        }
+
+        .scheme {
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: left;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background: #1e3c72;
+            color: #fff;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background: #2a5298;
+        }
+
+        .back-button {
+            background: #f44336;
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            background: #e53935;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button class="back-button" onclick="window.location.href='index.html'">Back to Home</button>
+        <h1>Scheme Suggestion Panel</h1>
+        <div class="user-details">
+            <h3>Your Details:</h3>
+            <p><strong>Name:</strong> <span id="user-name"></span></p>
+            <p><strong>Age:</strong> <span id="user-age"></span></p>
+            <p><strong>State:</strong> <span id="user-state"></span></p>
+            <p><strong>Income Group:</strong> <span id="user-income-group"></span></p>
+            <p><strong>Category:</strong> <span id="user-category"></span></p>
+        </div>
+        <div class="scheme-list">
+            <h3>Recommended Schemes:</h3>
+            <div id="schemes">
+                <!-- Dynamic scheme suggestions will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const name = localStorage.getItem('name');
+            const age = localStorage.getItem('age');
+            const state = localStorage.getItem('state');
+            const incomeGroup = localStorage.getItem('income-group');
+            const category = localStorage.getItem('category');
+
+            document.getElementById('user-name').innerText = name || 'N/A';
+            document.getElementById('user-age').innerText = age || 'N/A';
+            document.getElementById('user-state').innerText = state || 'N/A';
+            document.getElementById('user-income-group').innerText = incomeGroup || 'N/A';
+            document.getElementById('user-category').innerText = category || 'N/A';
+
+            const schemes = [];
+            if (incomeGroup === 'Below Poverty Line') {
+                schemes.push('Pradhan Mantri Awas Yojana (PMAY)', 'National Social Assistance Programme (NSAP)');
+            }
+            if (category === 'SC' || category === 'ST') {
+                schemes.push('Stand Up India Scheme', 'Post Matric Scholarship for SC/ST Students');
+            }
+            if (state === 'Maharashtra') {
+                schemes.push('Maharashtra Farmer Loan Waiver Scheme', 'Sanchar Kranti Yojana');
+            }
+            if (age < 18) {
+                schemes.push('Mid-Day Meal Scheme', 'Balika Samridhi Yojana');
+            } else if (age >= 60) {
+                schemes.push('Indira Gandhi National Old Age Pension Scheme (IGNOAPS)');
+            }
+
+            const schemeList = document.getElementById('schemes');
+            if (schemes.length > 0) {
+                schemes.forEach(scheme => {
+                    const schemeDiv = document.createElement('div');
+                    schemeDiv.classList.add('scheme');
+                    schemeDiv.innerHTML = `
+                        <p>${scheme}</p>
+                        <button onclick="selectScheme('${scheme}')">Select Scheme</button>
+                    `;
+                    schemeList.appendChild(schemeDiv);
+                });
+            } else {
+                schemeList.innerText = 'No schemes found for your details.';
+            }
+        });
+
+        function selectScheme(schemeName) {
+            localStorage.setItem('selected-scheme', schemeName);
+            window.location.href = 'documentREQ.htm';
+        }
+    </script>
+</body>
+
+</html>

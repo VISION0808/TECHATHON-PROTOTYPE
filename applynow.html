@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Government Schemes</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Modal Popup Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            background-color: #45a049;
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Explore Government Schemes</h1>
+    </header>
+    <section class="form-section">
+        <h2>Enter Your Details to Explore Schemes</h2>
+        <form action="#" method="POST" id="explore-form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" placeholder="Enter your age" required>
+
+            <label for="state">State</label>
+            <select id="state" name="state" required>
+                <option value="" disabled selected>Select your state</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <!-- Add more states here -->
+            </select>
+
+            <label for="income-group">Income Group</label>
+            <select id="income-group" name="income-group" required>
+                <option value="" disabled selected>Select your income group</option>
+                <option value="Below Poverty Line">Below Poverty Line (BPL)</option>
+                <option value="Lower Middle Class">Lower Middle Class</option>
+                <option value="Upper Middle Class">Upper Middle Class</option>
+                <option value="High Income">High Income</option>
+            </select>
+
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+                <option value="" disabled selected>Select your category</option>
+                <option value="General">General</option>
+                <option value="SC">Scheduled Caste (SC)</option>
+                <option value="ST">Scheduled Tribe (ST)</option>
+                <option value="OBC">Other Backward Classes (OBC)</option>
+            </select>
+
+            <label for="aadhaar">Aadhaar Card Number</label>
+            <input type="text" id="aadhaar" name="aadhaar" placeholder="Enter your Aadhaar number" maxlength="12" pattern="\d{12}" title="Aadhaar number must be 12 digits" required>
+
+            <label for="pan">PAN Card Number</label>
+            <input type="text" id="pan" name="pan" placeholder="Enter your PAN number" maxlength="10" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" title="PAN number must be in the format ABCDE1234F" required>
+
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+        <button id="backbutton" onclick="window.location.href='index.html'" class="button">Back</button>
+    </section>
+
+    <!-- Modal Popup -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <h2>Registration Successful!</h2>
+            <p>Your details have been saved. Redirecting you to the schemes page...</p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('explore-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Get values from form fields
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const state = document.getElementById('state').value;
+            const incomeGroup = document.getElementById('income-group').value;
+            const category = document.getElementById('category').value;
+            const aadhaar = document.getElementById('aadhaar').value;
+            const pan = document.getElementById('pan').value;
+            
+            // Store them in localStorage
+            localStorage.setItem('name', name);
+            localStorage.setItem('age', age);
+            localStorage.setItem('state', state);
+            localStorage.setItem('income-group', incomeGroup);
+            localStorage.setItem('category', category);
+            localStorage.setItem('aadhaar', aadhaar);
+            localStorage.setItem('pan', pan);
+
+            // Show the modal
+            const modal = document.getElementById('success-modal');
+            modal.style.display = 'flex';
+            document.body.classList.add('modal-open');
+
+            // Auto-redirect after 3 seconds
+            setTimeout(() => {
+                window.location.href = 'applynow.html';
+            }, 3000);
+        });
+
+        function closeModal() {
+            const modal = document.getElementById('success-modal');
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+        }
+    </script>
+</body>
+</html>
